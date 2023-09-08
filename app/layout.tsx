@@ -33,7 +33,7 @@ export default function RootLayout({
             enableSystem
             storageKey="chatPalamar-theme"
           >
-            <SocketProvider>              
+            <SocketProvider>
               <QueryProvider>
                 <ModalProvider />
                 {children}
