@@ -145,27 +145,31 @@ export const MembersModal = () => {
                     <DropdownMenuContent side="left">
                       <DropdownMenuSub>
                         <DropdownMenuSubTrigger className="flex items-center">
-                          <ShieldQuestion className="h-4 w-4 mr-2"/>
-                          <span>Role</span>
+                          <ShieldQuestion className="h-4 w-4 mr-2 bg-[#c0aeea] rounded text-[#8257e6]"/>
+                          <span className="text-xs">
+                            Permission
+                          </span>
                         </DropdownMenuSubTrigger>
                         <DropdownMenuPortal>
                           <DropdownMenuSubContent>
                             <DropdownMenuItem 
                               onClick={() => onRoleChange(member.id, "GUEST")}
+                              className="text-xs"
                             >
                               <User className="h-4 w-4 mr-2"/>
                               Guest
                               {member.role === "GUEST" && (
-                                <Check className="ml-auto h-4 w-4" />
+                                <Check className="ml-auto h-4 w-4 text-emerald-500" />
                               )}
                             </DropdownMenuItem>
                             <DropdownMenuItem 
                               onClick={() => onRoleChange(member.id, "MODERATOR")}
+                              className="text-xs"
                             >
                               <User className="h-4 w-4 mr-2"/>
                               Moderator
                               {member.role === "MODERATOR" && (
-                                <Check className="ml-auto h-4 w-4" />
+                                <Check className="ml-auto h-4 w-4 text-emerald-500" />
                               )}
                             </DropdownMenuItem>
                           </DropdownMenuSubContent>                          
@@ -175,8 +179,8 @@ export const MembersModal = () => {
                       <DropdownMenuItem
                       onClick={() => onKick(member.id)}
                       >
-                        <Gavel className="h-4 w-4 mr-2"/>                        
-                        Kick                       
+                        <Gavel className="h-4 w-4 mr-2 bg-rose-300 rounded text-rose-500"/>                        
+                        <span className="text-rose-500 text-xs">Kick</span>                       
                       </DropdownMenuItem>
                     </DropdownMenuContent>                    
                   </DropdownMenu>
