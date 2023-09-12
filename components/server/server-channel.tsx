@@ -2,8 +2,10 @@
 
 import { cn } from "@/lib/utils";
 import { Channel, ChannelType, MemberRole, Server } from "@prisma/client";
-import { Hash, Mic, Video } from "lucide-react";
+import { Edit, Lock, Mic, Trash, Video } from "lucide-react";
+import { Chat } from "phosphor-react"
 import { useParams, useRouter } from "next/navigation";
+import { ActionTooltip } from "@/components/action-tooltip";
 
 interface ServerChannelProps {
   channel: Channel;
@@ -12,7 +14,7 @@ interface ServerChannelProps {
 }
 
 const iconMap = {
-  [ChannelType.TEXT]: Hash,
+  [ChannelType.TEXT]: Chat,
   [ChannelType.AUDIO]: Mic,
   [ChannelType.VIDEO]: Video,
 };
@@ -37,7 +39,7 @@ export const ServerChannel = ({
     >
       <Icon
         className="w-5 h-5 flex-shrink-0 text-zinc-500
-        dark:text-zinc-400"
+        dark:text-zinc-400"        
       />
       <p
         className={cn(
@@ -48,6 +50,23 @@ export const ServerChannel = ({
       >
         {channel.name}
       </p>
+      {channel.name !== "welcome" && role !== MemberRole.GUEST && (
+        <div className="ml-auto flex items-center gap-x-2">
+          <ActionTooltip label="Edit Channel">
+            <Edit className="w-4 h-4 hidden group-hover:block text-zinc-500
+            hover:text-zinc-600 dark:text-zinc-400
+            dark:hover:text-zinc-300 transition"/>
+          </ActionTooltip>
+          <ActionTooltip label="Delete Channel">
+            <Trash className="w-4 h-4 hidden group-hover:block text-zinc-500
+            hover:text-zinc-600 dark:text-zinc-400
+            dark:hover:text-zinc-300 transition"/>
+          </ActionTooltip>
+        </div>
+      )}
+      {channel.name === "welcome" && (
+        <Lock className="w-4 h-4 ml-auto text-zinc-500 dark:text-zinc-400" />
+      )}
     </button>
   );
 };

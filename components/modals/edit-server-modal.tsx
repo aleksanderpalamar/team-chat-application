@@ -84,10 +84,10 @@ export const EditServerModal = () => {
       <DialogContent className="bg-white text-black p-0 overflow-hidden">
         <DialogHeader className="pt-8 px-6">
           <DialogTitle className="text-2xl text-center font-bold">
-            Customize your comunity
+            Customize your community
           </DialogTitle>
           <DialogDescription className="text-center text-zinc-500">
-            Give your comunity a personality with a name and image. You can always change it later.
+            Give your community a personality with a name and image. You can always change it later.
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -119,7 +119,7 @@ export const EditServerModal = () => {
                     <FormLabel
                       className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70"
                     >
-                      Server name
+                      Community name
                     </FormLabel>
                     <FormControl>
                       <Input 
