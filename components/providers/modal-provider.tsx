@@ -8,6 +8,8 @@ import { MembersModal } from "@/components/modals/members-modal"
 import { CreateChannelModal } from "@/components/modals/create-channel-modal"
 import { LeaveCommunityModal } from "@/components/modals/leave-community-modal"
 import { DeleteCommunityModal } from "@/components/modals/delete-community-modal"
+import { DeleteChannelModal } from "@/components/modals/delete-channel-modal"
+import { EditChannelModal } from "@/components/modals/edit-channel-modal"
 
 export const ModalProvider = () => {
   const [isMouted, setIsMouted] = useState(false)
@@ -29,6 +31,8 @@ export const ModalProvider = () => {
       <CreateChannelModal />
       <LeaveCommunityModal />
       <DeleteCommunityModal />
+      <DeleteChannelModal />
+      <EditChannelModal />
     </>
   )
 }

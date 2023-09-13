@@ -66,10 +66,8 @@ export const ServerMember = ({ member, server }: ServerMemberProps) => {
               "text-primary dark:text-zinc-200 dark:group-hover:text-white"
           )}
         >
-          {roleNameColor.trim() ? (
+          {roleNameColor.trim() && (
             <span className={roleNameColor}>{member.profile.name}</span>
-          ) : (
-            member.profile.name
           )}
         </p>
         <ActionTooltip label={member.role}>{icon}</ActionTooltip>

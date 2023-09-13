@@ -6,6 +6,7 @@ import { Edit, Lock, Mic, Trash, Video } from "lucide-react";
 import { Chat } from "phosphor-react"
 import { useParams, useRouter } from "next/navigation";
 import { ActionTooltip } from "@/components/action-tooltip";
+import { useModal } from "@/hooks/use-modal-store";
 
 interface ServerChannelProps {
   channel: Channel;
@@ -24,6 +25,7 @@ export const ServerChannel = ({
   server,
   role,
 }: ServerChannelProps) => {
+  const { onOpen } = useModal();
   const router = useRouter();
   const params = useParams();
 
@@ -53,12 +55,16 @@ export const ServerChannel = ({
       {channel.name !== "welcome" && role !== MemberRole.GUEST && (
         <div className="ml-auto flex items-center gap-x-2">
           <ActionTooltip label="Edit Channel">
-            <Edit className="w-4 h-4 hidden group-hover:block text-zinc-500
+            <Edit 
+            onClick={() => onOpen("editChannel", { channel, server })}
+            className="w-4 h-4 hidden group-hover:block text-zinc-500
             hover:text-zinc-600 dark:text-zinc-400
             dark:hover:text-zinc-300 transition"/>
           </ActionTooltip>
           <ActionTooltip label="Delete Channel">
-            <Trash className="w-4 h-4 hidden group-hover:block text-zinc-500
+            <Trash 
+            onClick={() => onOpen("deleteChannel", { channel, server })}
+            className="w-4 h-4 hidden group-hover:block text-zinc-500
             hover:text-zinc-600 dark:text-zinc-400
             dark:hover:text-zinc-300 transition"/>
           </ActionTooltip>
