@@ -1,5 +1,7 @@
 "use client"
 
+import axios from "axios"
+import qs from "query-string"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
@@ -35,7 +37,16 @@ export const ChatInput = ({ apiUrl, query, name, type }: ChatInputProps) => {
   const isLoading = form.formState.isSubmitting
 
   const handleOnSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values)    
+    try {
+      const url = qs.stringifyUrl({
+        url: apiUrl,
+        query,
+      })
+
+      await axios.post(url, values)
+    } catch (error) {
+      console.log(error)
+    }   
   }
 
   return (
@@ -61,9 +72,11 @@ export const ChatInput = ({ apiUrl, query, name, type }: ChatInputProps) => {
                   <Input 
                     disabled={isLoading}
                     className="px-14 py-6 bg-sky-200/90
-                    dark:bg-zinc-700/75 border-none border-0
+                    dark:bg-zinc-700/75 border-0 dark:border-[1px] dark:border-sky-500
                     focus-visible:ring-0 focus-visible:ring-offset-0
                     text-zinc-600 dark:text-zinc-200"
+                    placeholder={`Your message ${type === "conversation" ? name : "#" + name}`}
+                    {...field}
                   />
                   <div className="absolute top-7 right-8">
                     <SmileIcon className="text-pink-500 dark:text-pink-200/90 cursor-pointer" />
