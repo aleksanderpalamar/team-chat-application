@@ -14,7 +14,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Concord - Friendly Chat",
+  title: "TeamChatApplication - Friendly Chat",
   description: "Friendly Chat Application",
 };
 
