@@ -14,6 +14,8 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Plus, SmileIcon } from "lucide-react"
+import { useModal } from "@/hooks/use-modal-store"
+import { EmojiPicker } from "@/components/emoji-picker"
 
 interface ChatInputProps {
   apiUrl: string
@@ -27,6 +29,7 @@ const formSchema = z.object({
 })
 
 export const ChatInput = ({ apiUrl, query, name, type }: ChatInputProps) => {
+  const { onOpen } = useModal()
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -61,7 +64,7 @@ export const ChatInput = ({ apiUrl, query, name, type }: ChatInputProps) => {
                 <div className="relative p-4 pb-6">
                   <button 
                     type="button" 
-                    onClick={() => {}} 
+                    onClick={() => onOpen("messageFile", { apiUrl, query })} 
                     className="absolute top-7 left-8 h-[24px] w-[24px]
                     bg-sky-500 dark:bg-sky-400 hover:bg-sky-600
                     dark:hover:bg-sky-300 transition rounded-full p-1 flex
@@ -79,7 +82,9 @@ export const ChatInput = ({ apiUrl, query, name, type }: ChatInputProps) => {
                     {...field}
                   />
                   <div className="absolute top-7 right-8">
-                    <SmileIcon className="text-pink-500 dark:text-pink-200/90 cursor-pointer" />
+                    <EmojiPicker 
+                      onChange={(emoji: string) => field.onChange(`${field.value} ${emoji}`)}
+                    />
                   </div>
                 </div>
               </FormControl>
