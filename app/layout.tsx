@@ -34,8 +34,8 @@ export default function RootLayout({
             storageKey="chatPalamar-theme"
           >
             <SocketProvider>
-              <QueryProvider>
-                <ModalProvider />
+              <ModalProvider />
+              <QueryProvider>                
                 {children}
               </QueryProvider>
             </SocketProvider>
