@@ -21,6 +21,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { EmojiPicker } from "../emoji-picker";
+import { useModal } from "@/hooks/use-modal-store";
 
 interface ChatItemProps {
   id: string;
@@ -81,7 +82,7 @@ export const ChatItem = ({
   socketQuery,
 }: ChatItemProps) => {
   const [isEditing, setIsEditing] = useState(false);
-  const [isDeleting, setIsDeleting] = useState(false);
+  const { onOpen } = useModal();
 
   useEffect(() => {
     const handleKeyDown = (event: any) => {
@@ -269,7 +270,12 @@ export const ChatItem = ({
             </ActionTooltip>
           )}
           <ActionTooltip label="Delete">
-            <Trash className="w-5 h-5 cursor-pointer ml-auto text-rose-500
+            <Trash 
+            onClick={() => onOpen("deleteMessage", {
+              apiUrl: `${socketUrl}/${id}`,
+              query: socketQuery
+            })}
+            className="w-5 h-5 cursor-pointer ml-auto text-rose-500
             hover:text-rose-600 dark:text-rose-400 transition" />
           </ActionTooltip>          
         </div>
