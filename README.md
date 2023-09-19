@@ -22,6 +22,10 @@
 - [x] MySQL database using Planetscale
 - [x] Authentication with Clerk
 
+## Contributing
+
+You can contribute to this project by creating a PR on the [GitHub repository](https://github.com/aleksanderpalamar/team-chat-application).
+
 ### Prerequisites
 
 **Node version v18.x.x**
