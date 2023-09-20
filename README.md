@@ -1,6 +1,6 @@
-# Fullstack application Concord Team Chat: Next.js 13, Socket.io, Prisma, Tailwind, MySQL
+# Fullstack application xTeam Chat: Next.js 13, Socket.io, Prisma, Tailwind, MySQL
 
-![Copyright 2023 Concord Team Chat Application]()
+![Copyright 2023 xTeam Chat Application]()
 
 ## Features
 
