@@ -10,7 +10,9 @@ export const NavigationLogo = () => {
         overflow-hidden items-center justify-center
         bg-background dark:bg-neutral-700 group-hover:bg-sky-500"
         >
-          Logo
+          <span className="text-sky-500 group-hover:text-white transition text-xs font-semibold">
+            xTeam
+          </span>
         </div>
       </a>
     </ActionTooltip>
