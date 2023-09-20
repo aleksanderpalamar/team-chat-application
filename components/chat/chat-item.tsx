@@ -20,8 +20,8 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { EmojiPicker } from "../emoji-picker";
 import { useModal } from "@/hooks/use-modal-store";
+import { useRouter, useParams } from "next/navigation";
 
 interface ChatItemProps {
   id: string;
@@ -83,6 +83,16 @@ export const ChatItem = ({
 }: ChatItemProps) => {
   const [isEditing, setIsEditing] = useState(false);
   const { onOpen } = useModal();
+  const params = useParams();
+  const router = useRouter();
+
+  const handleClickMember = () => {
+    if (member.id === currentMember.id) {
+      return
+    }
+
+    router.push(`/servers/${params?.serverId}/conversations/${member.id}`)
+  }
 
   useEffect(() => {
     const handleKeyDown = (event: any) => {
@@ -145,28 +155,32 @@ export const ChatItem = ({
   const newDateFormat = () => {
     const date = new Date(timestamp);
     return date.toLocaleString();
-  }
- 
+  } 
 
   return (
     <div className="relative group flex items-center hover:bg-black/5 p-4 transition w-full">
       <div className="group flex gap-x-2 items-start w-full">
-        <div className="cursor-pointer hover:drop-shadow-md transition">
+        <div onClick={handleClickMember} className="cursor-pointer hover:drop-shadow-md transition">
           <UserAvatar src={member.profile.imageUrl} />
         </div>
         <div className="flex flex-col w-full">
           <div className="flex items-center gap-x-2">
             <div className="flex items-center gap-x-2">
               {roleNameColor.trim() && (
-                <p className={roleNameColor}>{member.profile.name}</p>
+                <p onClick={handleClickMember} className={cn(
+                  "cursor-pointer",
+                  roleNameColor
+                )}>{member.profile.name}</p>
               )}
               <ActionTooltip label={member.role}>
                 <span>{icon}</span>
               </ActionTooltip>
             </div>
+            <ActionTooltip label={timestamp}>
             <span className="text-xs text-zinc-500 dark:text-zinc-400">
               {newDateFormat()}
             </span>
+            </ActionTooltip>
           </div>
             {isImage && (
               <a 
