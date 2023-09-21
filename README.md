@@ -1,6 +1,6 @@
 # Fullstack application xTeam Chat: Next.js 13, Socket.io, Prisma, Tailwind, MySQL
 
-![Copyright 2023 xTeam Chat Application]()
+![Copyright 2023 xTeam Chat Application](https://cdn.discordapp.com/attachments/811800332006457356/1154434880684425266/xTeamChat.png)
 
 ## Features
 
