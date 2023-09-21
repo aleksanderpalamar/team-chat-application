@@ -3,9 +3,6 @@
   "author": "Aleksander Palamar",
   "license": "MIT",
   "description": "Team Chat Application is a clone of discord.",
-  "engines": {
-    "node": ">=18.0.0"
-  },
   "version": "0.1.0",
   "private": true,
   "scripts": {
