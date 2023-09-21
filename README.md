@@ -77,7 +77,7 @@ npx prisma db push
 ### Start the application
 
 ```shell
-npm run dev
+npm run turbo:dev
 ```
 
 ## Available Commands
